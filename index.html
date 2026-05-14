@@ -1,0 +1,1461 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<style>:root { color-scheme: light only; }</style>
+<title>Mã đề 902 – Tiếng Anh 9</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  @media (prefers-color-scheme: dark) {
+    html, body, * { background-color: #fff !important; color: #000 !important; }
+    input, label, div, p, span, td, th, h1, h2, h3, h4 { color: #000 !important; background-color: transparent !important; }
+    .header-table {
+      background:
+        radial-gradient(circle at 8% 12%, rgba(255, 238, 217, .30), transparent 34%),
+        linear-gradient(135deg, #4f1d19 0%, #7b2d26 46%, #a54a38 100%) !important;
+      border-color: #7b2d26 !important;
+      box-shadow: 0 8px 22px rgba(91, 30, 26, .18) !important;
+    }
+    .header-table, .header-table * { color: #fff !important; background-color: transparent !important; }
+    .header-left { border-right-color: rgba(255,255,255,.28) !important; }
+    .info-row { background: #fff8f3 !important; border-color: rgba(123,45,38,.25) !important; }
+    .answer-sheet { background: #fafafa !important; }
+    .expl-section h4 { background: #f2f2f2 !important; }
+    .score-box { background: #f9f9f9 !important; }
+    .correct-mark { background: #c8f7c5 !important; color: #155724 !important; }
+    .wrong-mark   { background: #f8d7da !important; color: #721c24 !important; }
+    .opted-correct { background: #c8f7c5 !important; }
+    .opted-wrong   { background: #f8d7da !important; }
+    .notif { background: #fff3cd !important; }
+    .btn-submit { background: #1a1a1a !important; color: #fff !important; }
+  }
+  html {
+    background: #e9e9e9;
+  }
+  body {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 14px;
+    background: #fff;
+    color: #000;
+    padding: 28px 32px;
+    max-width: 820px;
+    margin: 20px auto;
+    position: relative;
+    border: 2px solid #7b2d26;
+    box-shadow: 0 4px 18px rgba(91,30,26,.16);
+    min-height: calc(100vh - 40px);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  body::before {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border: 1px solid rgba(123,45,38,.55);
+    pointer-events: none;
+  }
+  @media (max-width: 860px) {
+    body { margin: 10px; padding: 24px 20px; }
+    body::before { inset: 8px; }
+    .header-table td { padding: 12px 10px; }
+    .school-name, .exam-title { font-size: 14px; }
+  }
+  @media print {
+    @page { size: A4; margin: 10mm; }
+    html { background: #fff !important; }
+    body {
+      max-width: none;
+      margin: 0;
+      padding: 8mm;
+      border: none;
+      box-shadow: none;
+      min-height: auto;
+    }
+    body::before {
+      position: fixed;
+      inset: 0;
+      border: 1.5px solid #000;
+    }
+
+    body.print-report-mode {
+      max-width: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      border: none !important;
+      box-shadow: none !important;
+      background: #fff !important;
+    }
+    body.print-report-mode::before { display: none !important; }
+    body.print-report-mode > :not(#teacher-pdf-area) { display: none !important; }
+    body.print-report-mode #teacher-pdf-area { display: block !important; }
+    body.print-report-mode .teacher-pdf-page { display: block !important; page-break-after: auto; }
+    body.print-report-mode .pdf-answer-table th { background: #f2f2f2 !important; }
+  }
+
+  /* ── HEADER / HERO ── */
+  .header-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 10px;
+    background:
+      radial-gradient(circle at 8% 12%, rgba(255, 238, 217, .30), transparent 34%),
+      linear-gradient(135deg, #4f1d19 0%, #7b2d26 46%, #a54a38 100%);
+    border: 1.5px solid #7b2d26;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 22px rgba(91, 30, 26, .18);
+  }
+  .header-table td {
+    vertical-align: top;
+    font-size: 13px;
+    color: #fff;
+    padding: 14px 16px;
+  }
+  .header-left { text-align: center; width: 50%; border-right: 1px solid rgba(255,255,255,.28); }
+  .header-right { text-align: center; width: 50%; }
+  .header-table div { color: #fff; }
+  .bold { font-weight: bold; }
+  .school-name {
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    text-shadow: 0 1px 1px rgba(0,0,0,.18);
+  }
+  .exam-title {
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 1.45;
+    text-shadow: 0 1px 1px rgba(0,0,0,.18);
+  }
+  .divider { border: none; border-top: 1px solid rgba(123,45,38,.75); margin: 10px 0; }
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0 14px;
+    font-size: 13px;
+    background: #fff8f3;
+    border: 1px solid rgba(123,45,38,.25);
+    border-left: 4px solid #7b2d26;
+    border-radius: 8px;
+    padding: 8px 10px;
+  }
+  .info-row span { border-bottom: 1px dotted #7b2d26; flex: 1; margin-left: 6px; }
+
+  /* ── SECTIONS ── */
+  .section-instruction {
+    font-style: italic;
+    font-weight: bold;
+    font-size: 13.5px;
+    margin: 14px 0 6px;
+  }
+  .passage {
+    text-align: justify;
+    margin-bottom: 8px;
+    line-height: 1.6;
+  }
+  .question-block { margin-bottom: 10px; }
+  .q-stem { font-weight: bold; margin-bottom: 3px; line-height: 1.5; }
+  .q-stem .q-num { /* bold already */ }
+  .options { padding-left: 14px; }
+  .options label {
+    display: block;
+    cursor: pointer;
+    padding: 2px 4px;
+    border-radius: 3px;
+    transition: background .15s;
+    line-height: 1.5;
+  }
+  .options label:hover { background: #f0f0f0; }
+  .options input[type=radio] { margin-right: 5px; }
+
+  /* two-column options */
+  .options-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+    padding-left: 14px;
+  }
+  .options-2col label {
+    cursor: pointer;
+    padding: 2px 4px;
+    border-radius: 3px;
+    transition: background .15s;
+    line-height: 1.5;
+  }
+  .options-2col label:hover { background: #f0f0f0; }
+  .options-2col input[type=radio] { margin-right: 5px; }
+
+  /* ── ANSWER SHEET ── */
+  .answer-sheet {
+    border: 1.5px solid rgba(123,45,38,.78);
+    padding: 10px 14px;
+    margin: 14px 0 10px;
+    background: #fffaf6;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(91,30,26,.07);
+  }
+  .answer-sheet h3 {
+    font-size: 13.5px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-align: center;
+    letter-spacing: .3px;
+    color: #6f261f;
+  }
+  .ans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 6px 12px;
+  }
+  .ans-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+  }
+  .ans-row .qn { min-width: 26px; font-weight: bold; }
+  .ans-row label {
+    cursor: pointer;
+    padding: 1px 5px;
+    border-radius: 3px;
+    transition: background .15s;
+  }
+  .ans-row label:hover { background: #e8e8e8; }
+  .ans-row input[type=radio] { margin-right: 2px; }
+
+  /* ── SUBMIT BTN ── */
+  .submit-area { text-align: center; margin: 16px 0 10px; }
+  .btn-submit {
+    background: linear-gradient(135deg, #6f261f 0%, #9a3d31 100%);
+    color: #fff;
+    border: none;
+    padding: 10px 36px;
+    font-size: 14px;
+    font-family: inherit;
+    cursor: pointer;
+    border-radius: 6px;
+    letter-spacing: .5px;
+    transition: transform .16s, filter .2s;
+    box-shadow: 0 4px 12px rgba(111,38,31,.24);
+  }
+  .btn-submit:hover { filter: brightness(1.08); transform: translateY(-1px); }
+
+  /* ── RESULTS ── */
+  #results-area { display: none; margin-top: 16px; }
+  .score-box {
+    border: 2px solid #7b2d26;
+    padding: 12px 20px;
+    text-align: center;
+    margin-bottom: 16px;
+    background: #fff8f3;
+    border-radius: 8px;
+  }
+  .score-box .score-num { font-size: 28px; font-weight: bold; }
+  .score-box .score-label { font-size: 13px; color: #555; }
+
+  /* Marking on answer sheet */
+  .correct-mark { background: #c8f7c5 !important; color: #155724; font-weight: bold; border-radius: 3px; }
+  .wrong-mark   { background: #f8d7da !important; color: #721c24; font-weight: bold; border-radius: 3px; }
+
+  /* Explanation accordion */
+  .explanations { margin-top: 10px; }
+  .expl-section { margin-bottom: 14px; }
+  .expl-section h4 {
+    font-size: 13.5px;
+    font-weight: bold;
+    cursor: pointer;
+    border: 1px solid rgba(123,45,38,.32);
+    padding: 6px 10px;
+    background: #fff3ec;
+    color: #6f261f;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 6px 6px 0 0;
+  }
+  .expl-section h4:hover { background: #ffe9dd; }
+  .expl-body { display: none; border: 1px solid rgba(123,45,38,.32); border-top: none; padding: 8px 10px; }
+  .expl-body.open { display: block; }
+  .expl-item { margin-bottom: 8px; font-size: 13px; line-height: 1.6; }
+  .expl-item .eq { font-weight: bold; }
+  .expl-item .ans-correct { color: #155724; font-weight: bold; }
+  .expl-item .ans-wrong   { color: #721c24; text-decoration: line-through; }
+
+  /* highlight in-text answers */
+  .opted-correct { background: #c8f7c5; border-radius: 2px; padding: 0 2px; }
+  .opted-wrong   { background: #f8d7da; border-radius: 2px; padding: 0 2px; }
+
+  .page-break-note { font-size: 11px; color: #888; text-align: right; margin: 6px 0; border-top: 1px solid #ddd; padding-top: 4px; }
+
+
+
+  /* ── STUDENT INFO INPUTS ── */
+  .student-info-row {
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .student-info-row .info-label {
+    flex: none;
+    margin-left: 0;
+    border-bottom: none !important;
+    font-weight: bold;
+  }
+  .student-info-row .info-input {
+    font-family: inherit;
+    font-size: 13px;
+    border: none;
+    border-bottom: 1px dotted #000;
+    background: transparent;
+    outline: none;
+    padding: 2px 4px;
+    min-width: 180px;
+    flex: 1;
+  }
+  .student-info-row .student-id-input {
+    max-width: 110px;
+    min-width: 90px;
+    flex: none;
+  }
+  .student-info-row .exam-code {
+    flex: none;
+    margin-left: 8px;
+    border-bottom: none !important;
+  }
+
+  /* ── TIMER ── */
+  .timer-bar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    margin: 8px 0 14px;
+    padding: 9px 12px;
+    border: 1px solid rgba(123,45,38,.35);
+    border-left: 4px solid #7b2d26;
+    border-radius: 8px;
+    background: #fff8f3;
+    color: #6f261f;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(91,30,26,.08);
+  }
+  .timer-bar.time-warning {
+    border-left-color: #b35a3b;
+    background: #fff3cd;
+    color: #7a341f;
+  }
+  .timer-bar.time-danger {
+    border-left-color: #b00020;
+    background: #fde7e9;
+    color: #8a0019;
+  }
+  #timer-display {
+    font-size: 18px;
+    letter-spacing: .6px;
+  }
+
+  /* ── PDF EXPORT FOR TEACHER ── */
+  .teacher-export-area {
+    text-align: center;
+    margin: 10px 0 16px;
+  }
+  .btn-pdf {
+    background: linear-gradient(135deg, #1f4f33 0%, #2d7a4c 100%);
+    color: #fff;
+    border: none;
+    padding: 10px 28px;
+    font-size: 14px;
+    font-family: inherit;
+    cursor: pointer;
+    border-radius: 6px;
+    letter-spacing: .3px;
+    box-shadow: 0 4px 12px rgba(31,79,51,.20);
+  }
+  .btn-pdf:hover { filter: brightness(1.08); transform: translateY(-1px); }
+  .export-note {
+    margin-top: 6px;
+    font-size: 12px;
+    color: #555;
+  }
+  #teacher-pdf-area { display: none; }
+
+  .teacher-pdf-page {
+    font-family: "Times New Roman", Times, serif;
+    color: #000;
+    background: #fff;
+    padding: 10mm;
+    font-size: 13px;
+    line-height: 1.45;
+  }
+  .pdf-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .pdf-subtitle {
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .pdf-meta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 18px;
+    margin: 8px 0 10px;
+  }
+  .pdf-score-box {
+    border: 1.5px solid #000;
+    padding: 8px 10px;
+    margin: 8px 0 12px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+  }
+  .pdf-answer-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+    font-size: 12px;
+  }
+  .pdf-answer-table th,
+  .pdf-answer-table td {
+    border: 1px solid #000;
+    padding: 4px 5px;
+    text-align: center;
+  }
+  .pdf-answer-table th { font-weight: bold; background: #f2f2f2; }
+  .pdf-signature {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 18px;
+    text-align: center;
+  }
+  .pdf-small-note {
+    font-size: 11px;
+    margin-top: 8px;
+    color: #333;
+  }
+
+  /* notification */
+  .notif {
+    background: #fff3cd; border: 1px solid #b35a3b; padding: 8px 12px;
+    border-radius: 4px; font-size: 13px; margin-bottom: 10px; display: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ HEADER ═══════════════════ -->
+<table class="header-table">
+  <tr>
+    <td class="header-left">
+      <div class="school-name">TRƯỜNG THCS TRƯNG VƯƠNG</div>
+      <div style="margin-top:8px;font-size:12px;">--------------------</div>
+      <div style="font-style:italic;font-size:12px;">(Đề thi gồm 40 câu)</div>
+    </td>
+    <td class="header-right">
+      <div class="exam-title">ĐỀ KHẢO SÁT THI VÀO LỚP 10<br>NĂM HỌC 2025 – 2026<br>MÔN: TIẾNG ANH 9</div>
+      <div style="font-style:italic;font-size:12px;margin-top:4px;">Thời gian làm bài: 60 PHÚT<br>(không kể thời gian phát đề)</div>
+    </td>
+  </tr>
+</table>
+<hr class="divider">
+<div class="info-row student-info-row">
+  <span class="info-label">Họ và tên:</span>
+  <input class="info-input" id="student-name" type="text" autocomplete="name" placeholder="Nhập họ và tên">
+  <span class="info-label">Số báo danh:</span>
+  <input class="info-input student-id-input" id="student-id" type="text" placeholder="SBD">
+  <span class="exam-code"><strong>Mã đề 902</strong></span>
+</div>
+
+<div class="timer-bar" id="timer-bar">
+  ⏱️ Thời gian còn lại: <span id="timer-display">60:00</span>
+</div>
+
+<!-- ═══════════════════ SECTION 1: READING ═══════════════════ -->
+<div class="section-instruction">Read the following passage and mark the letter A, B, C or D on your answer sheet to indicate the correct answer to each of the following questions.</div>
+
+<div class="passage">
+Scientists have studied how the brain learns and found that regular practice is one of the most effective ways to improve memory and skills. When we repeat an activity, the brain builds stronger connections between neurons. This process, called "<strong>neuroplasticity</strong>", helps information move faster and more easily in the brain.<br><br>
+Research also shows that short study sessions are better than long ones. Instead of studying for many hours at once, students should review information in smaller periods over several days. This method, known as "spaced learning," allows the brain to store knowledge more <strong>effectively</strong>.<br><br>
+Another important factor is sleep. During sleep, the brain <strong>organizes</strong> and strengthens what we have learned during the day. Students who do not get enough sleep often find it harder to concentrate and remember information.<br><br>
+Failure also plays a role in learning. When students make mistakes and correct them, the brain becomes more active and improves its understanding. <strong>This</strong> shows that learning is not only about getting the right answer but also about the process of thinking and trying again.<br><br>
+By using these methods, students can study smarter and achieve better results.
+</div>
+
+<!-- Q1–6 answer sheet mini -->
+<div class="answer-sheet" id="sheet-A">
+  <h3>📋 BẢNG TRẢ LỜI – Phần 1 (Questions 1–6)</h3>
+  <div class="ans-grid" id="grid-A"></div>
+</div>
+
+<!-- Q1 -->
+<div class="question-block" id="qblock-1">
+  <div class="q-stem">Question 1. Which of the following best expresses the main idea of the passage?</div>
+  <div class="options">
+    <label><input type="radio" name="q1" value="A"> A. Scientists study how the brain works during sleep.</label>
+    <label><input type="radio" name="q1" value="B"> B. Students should avoid making mistakes in exams.</label>
+    <label><input type="radio" name="q1" value="C"> C. The brain only learns through repetition.</label>
+    <label><input type="radio" name="q1" value="D"> D. Effective ways to improve learning based on science.</label>
+  </div>
+</div>
+
+<div class="question-block" id="qblock-2">
+  <div class="q-stem">Question 2. What is "<strong>neuroplasticity</strong>" mainly about?</div>
+  <div class="options">
+    <label><input type="radio" name="q2" value="A"> A. The brain builds stronger connections through practice.</label>
+    <label><input type="radio" name="q2" value="B"> B. The brain stops working during sleep or when tired.</label>
+    <label><input type="radio" name="q2" value="C"> C. The brain becomes tired after studying long hours.</label>
+    <label><input type="radio" name="q2" value="D"> D. The brain stores only new information after learning.</label>
+  </div>
+</div>
+
+<div class="question-block" id="qblock-3">
+  <div class="q-stem">Question 3. Which of the following is <strong>NOT</strong> mentioned as a way to improve learning?</div>
+  <div class="options-2col">
+    <label><input type="radio" name="q3" value="A"> A. Studying in short periods over time</label>
+    <label><input type="radio" name="q3" value="B"> B. Getting enough sleep every night</label>
+    <label><input type="radio" name="q3" value="C"> C. Reviewing lessons regularly</label>
+    <label><input type="radio" name="q3" value="D"> D. Studying many hours without breaks</label>
+  </div>
+</div>
+
+<div class="question-block" id="qblock-4">
+  <div class="q-stem">Question 4. What does the word "<strong>This</strong>" in paragraph 4 refer to?</div>
+  <div class="options">
+    <label><input type="radio" name="q4" value="A"> A. the method of spaced learning</label>
+    <label><input type="radio" name="q4" value="B"> B. the idea that mistakes help learning</label>
+    <label><input type="radio" name="q4" value="C"> C. the importance of getting enough sleep</label>
+    <label><input type="radio" name="q4" value="D"> D. the result of long study sessions</label>
+  </div>
+</div>
+
+<div class="question-block" id="qblock-5">
+  <div class="q-stem">Question 5. The word "<strong>organizes</strong>" in paragraph 3 is closest in meaning to ______.</div>
+  <div class="options-2col">
+    <label><input type="radio" name="q5" value="A"> A. changes</label>
+    <label><input type="radio" name="q5" value="B"> B. forgets</label>
+    <label><input type="radio" name="q5" value="C"> C. destroys</label>
+    <label><input type="radio" name="q5" value="D"> D. arranges</label>
+  </div>
+</div>
+
+<div class="question-block" id="qblock-6">
+  <div class="q-stem">Question 6. The word "<strong>effectively</strong>" in paragraph 2 is opposite in meaning to ______.</div>
+  <div class="options-2col">
+    <label><input type="radio" name="q6" value="A"> A. properly</label>
+    <label><input type="radio" name="q6" value="B"> B. efficiently</label>
+    <label><input type="radio" name="q6" value="C"> C. poorly</label>
+    <label><input type="radio" name="q6" value="D"> D. successfully</label>
+  </div>
+</div>
+
+<!-- ═══════════════════ SECTION 2: GRAMMAR ═══════════════════ -->
+<hr class="divider" style="margin:14px 0;">
+<div class="section-instruction">Mark the letter A, B, C or D on your answer sheet to indicate the correct answer to each of the following questions.</div>
+
+<div class="answer-sheet" id="sheet-B">
+  <h3>📋 BẢNG TRẢ LỜI – Phần 2 (Questions 7–14)</h3>
+  <div class="ans-grid" id="grid-B"></div>
+</div>
+
+<div class="question-block" id="qblock-7">
+  <div class="q-stem">Question 7. _______ the teacher arrives, the students will stand up.</div>
+  <div class="options-2col">
+    <label><input type="radio" name="q7" value="A"> A. Although</label>
+    <label><input type="radio" name="q7" value="B"> B. While</label>
+    <label><input type="radio" name="q7" value="C"> C. Due to</label>
+    <label><input type="radio" name="q7" value="D"> D. As soon as</label>
+  </div>
+</div>
+
+<div class="question-block" id="qblock-8">
+  <div class="q-stem">Question 8. It was _______ interesting book that I stayed up all night to finish.</div>
+  <div class="options-2col">
+    <label><input type="radio" name="q8" value="A"> A. too an</label>
+    <label><input type="radio" name="q8" value="B"> B. so an</label>
+    <label><input type="radio" name="q8" value="C"> C. such</label>
+    <label><input type="radio" name="q8" value="D"> D. such an</label>
+  </div>
+</div>
+
+<div class="question-block" id="qblock-9">
+  <div class="q-stem">Question 9. The match was cancelled _______ the heavy rain.</div>
+  <div class="options-2col">
+    <label><input type="radio" name="q9" value="A"> A. because of</label>
+    <label><input type="radio" name="q9" value="B"> B. so</label>
+    <label><input type="radio" name="q9" value="C"> C. because</label>
+    <label><input type="radio" name="q9" value="D"> D. although</label>
+  </div>
+</div>
+
+<div class="question-block" id="qblock-10">
+  <div class="q-stem">Question 10. The more carefully you prepare, _______ you will feel before the exam.</div>
+  <div class="options-2col">
+    <label><input type="radio" name="q10" value="A"> A. the confident</label>
+    <label><input type="radio" name="q10" value="B"> B. the more confident</label>
+    <label><input type="radio" name="q10" value="C"> C. the most confident</label>
+    <label><input type="radio" name="q10" value="D"> D. more confident</label>
+  </div>
+</div>
+
+<div class="question-block" id="qblock-11">
+  <div class="q-stem">Question 11. By the time we _______ at the cinema, the film _______.</div>
+  <div class="options-2col">
+    <label><input type="radio" name="q11" value="A"> A. arriving / started</label>
+    <label><input type="radio" name="q11" value="B"> B. arrived / had started</label>
+    <label><input type="radio" name="q11" value="C"> C. arrive / was starting</label>
+    <label><input type="radio" name="q11" value="D"> D. arrived / has started</label>
+  </div>
+</div>
+
+<div class="question-block" id="qblock-12">
+  <div class="q-stem">Question 12. My mother bought _______ lettuce at the market this morning.</div>
+  <div class="options-2col">
+    <label><input type="radio" name="q12" value="A"> A. a jar of</label>
+    <label><input type="radio" name="q12" value="B"> B. a head of</label>
+    <label><input type="radio" name="q12" value="C"> C. a piece of</label>
+    <label><input type="radio" name="q12" value="D"> D. a loaf of</label>
+  </div>
+</div>
+
+<div class="question-block" id="qblock-13">
+  <div class="q-stem">Question 13. My little brother detests _______ up early on cold winter mornings.</div>
+  <div class="options-2col">
+    <label><input type="radio" name="q13" value="A"> A. get</label>
+    <label><input type="radio" name="q13" value="B"> B. to get</label>
+    <label><input type="radio" name="q13" value="C"> C. got</label>
+    <label><input type="radio" name="q13" value="D"> D. getting</label>
+  </div>
+</div>
+
+<div class="question-block" id="qblock-14">
+  <div class="q-stem">Question 14. Alfred sees Kristine carrying many heavy books to the classroom. He offers to help her.<br>Alfred: "Would you like me to help you carry these books?" – Kristine: "_______"</div>
+  <div class="options">
+    <label><input type="radio" name="q14" value="A"> A. I'm afraid not.</label>
+    <label><input type="radio" name="q14" value="B"> B. It doesn't matter.</label>
+    <label><input type="radio" name="q14" value="C"> C. Never mind.</label>
+    <label><input type="radio" name="q14" value="D"> D. That's very kind of you.</label>
+  </div>
+</div>
+
+<!-- ═══════════════════ SECTION 3: REWRITE ═══════════════════ -->
+<hr class="divider" style="margin:14px 0;">
+<div class="section-instruction">Mark the letter A, B, C, or D on your answer sheet to indicate the sentence that is closest in meaning to the original sentence in each of the following questions.</div>
+
+<div class="answer-sheet" id="sheet-C">
+  <h3>📋 BẢNG TRẢ LỜI – Phần 3 (Questions 15–16)</h3>
+  <div class="ans-grid" id="grid-C"></div>
+</div>
+
+<div class="question-block" id="qblock-15">
+  <div class="q-stem">Question 15. He studies hard so that he won't fail the final exam.</div>
+  <div class="options">
+    <label><input type="radio" name="q15" value="A"> A. He studies hard because he wants failing the final exam.</label>
+    <label><input type="radio" name="q15" value="B"> B. He studies hard in order to not fail the final exam.</label>
+    <label><input type="radio" name="q15" value="C"> C. He studies hard in order not to fail the final exam.</label>
+    <label><input type="radio" name="q15" value="D"> D. He studies hard although he won't fail the final exam.</label>
+  </div>
+</div>
+
+<div class="question-block" id="qblock-16">
+  <div class="q-stem">Question 16. My mother told me that she would pick me up after school.</div>
+  <div class="options">
+    <label><input type="radio" name="q16" value="A"> A. "I picked you up after school," my mother said to me.</label>
+    <label><input type="radio" name="q16" value="B"> B. "I would pick you up after school," my mother said to me.</label>
+    <label><input type="radio" name="q16" value="C"> C. "I will pick you up after school," my mother said to me.</label>
+    <label><input type="radio" name="q16" value="D"> D. "You will pick me up after school," my mother said to me.</label>
+  </div>
+</div>
+
+<!-- ═══════════════════ SECTION 4: SIGNS & NOTICES ═══════════════════ -->
+<hr class="divider" style="margin:14px 0;">
+<div class="section-instruction">Read the following sign or notice and mark the letter A, B, C or D on your answer sheet to indicate the correct answer to each of the following questions.</div>
+
+<div class="answer-sheet" id="sheet-D">
+  <h3>📋 BẢNG TRẢ LỜI – Phần 4 (Questions 17–18)</h3>
+  <div class="ans-grid" id="grid-D"></div>
+</div>
+
+<div class="question-block" id="qblock-17">
+  <div class="q-stem">Question 17. What does the sign say?</div>
+  <div style="display:flex;align-items:flex-start;gap:16px;margin-bottom:6px;">
+    <div style="border:3px solid #f0a000;background:#ffd;padding:10px 14px;text-align:center;min-width:100px;font-weight:bold;font-size:13px;">
+      ⚠️ WARNING<br><br>🐍<br><br>BEWARE<br>OF<br>SNAKES
+    </div>
+    <div class="options" style="padding-left:0;">
+      <label><input type="radio" name="q17" value="A"> A. This area is used to protect rare kinds of snakes.</label>
+      <label><input type="radio" name="q17" value="B"> B. People should not enter without proper protection.</label>
+      <label><input type="radio" name="q17" value="C"> C. Visitors should watch out for snakes in the area.</label>
+      <label><input type="radio" name="q17" value="D"> D. Everyone should report dangerous animals immediately.</label>
+    </div>
+  </div>
+</div>
+
+<div class="question-block" id="qblock-18">
+  <div class="q-stem">Question 18. What does Anna ask Linda to do?</div>
+  <div style="display:flex;align-items:flex-start;gap:16px;margin-bottom:6px;">
+    <div style="border:1px solid #ccc;background:#f9f0f5;padding:10px;min-width:200px;font-size:12.5px;line-height:1.6;">
+      Hi Linda,<br>
+      Thank you for lending me your book about healthy cooking. It's great.<br>
+      How about coming to my house this Sunday? We can try some recipes from the book.<br>
+      Can you bring some fresh mangoes from your garden? We'll need them for one of the recipes.<br>
+      See you soon,<br>
+      Anna
+    </div>
+    <div class="options" style="padding-left:0;">
+      <label><input type="radio" name="q18" value="A"> A. To bring some fresh mangoes from the garden.</label>
+      <label><input type="radio" name="q18" value="B"> B. To lend her a book about healthy cooking.</label>
+      <label><input type="radio" name="q18" value="C"> C. To buy some healthy food from the market.</label>
+      <label><input type="radio" name="q18" value="D"> D. To teach her how to cook at Linda's house.</label>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ SECTION 5: CLOZE (announcement) ═══════════════════ -->
+<hr class="divider" style="margin:14px 0;">
+<div class="section-instruction">Read the following announcement and mark the letter A, B, C or D on your answer sheet to indicate the correct option that best fits each of the numbered blanks.</div>
+
+<div class="passage">
+The Youth Club is pleased to announce a weekend candle-making workshop for students (19) _____ enjoy creative activities.
+<ul style="list-style:none;margin:6px 0 6px 16px;">
+  <li>◆ The event will (20) _____ at 3:00 p.m. on Sunday in the school art room.</li>
+  <li>◆ During the workshop, participants will learn how (21) _____ simple scented candles and decorate them in their own style.</li>
+  <li>◆ All materials will be provided, (22) _____ students only need to arrive on time and be ready to join in.</li>
+</ul>
+◆ We hope this activity will help students relax, be more creative, and enjoy a fun afternoon with their friends.
+</div>
+
+<div class="answer-sheet" id="sheet-E">
+  <h3>📋 BẢNG TRẢ LỜI – Phần 5 (Questions 19–22)</h3>
+  <div class="ans-grid" id="grid-E"></div>
+</div>
+
+<div class="question-block" id="qblock-19">
+  <div class="q-stem">Question 19.</div>
+  <div class="options-2col">
+    <label><input type="radio" name="q19" value="A"> A. who</label>
+    <label><input type="radio" name="q19" value="B"> B. which</label>
+    <label><input type="radio" name="q19" value="C"> C. whose</label>
+    <label><input type="radio" name="q19" value="D"> D. whom</label>
+  </div>
+</div>
+<div class="question-block" id="qblock-20">
+  <div class="q-stem">Question 20.</div>
+  <div class="options-2col">
+    <label><input type="radio" name="q20" value="A"> A. take after</label>
+    <label><input type="radio" name="q20" value="B"> B. take place</label>
+    <label><input type="radio" name="q20" value="C"> C. take care</label>
+    <label><input type="radio" name="q20" value="D"> D. take up</label>
+  </div>
+</div>
+<div class="question-block" id="qblock-21">
+  <div class="q-stem">Question 21.</div>
+  <div class="options-2col">
+    <label><input type="radio" name="q21" value="A"> A. to make</label>
+    <label><input type="radio" name="q21" value="B"> B. making</label>
+    <label><input type="radio" name="q21" value="C"> C. makes</label>
+    <label><input type="radio" name="q21" value="D"> D. made</label>
+  </div>
+</div>
+<div class="question-block" id="qblock-22">
+  <div class="q-stem">Question 22.</div>
+  <div class="options-2col">
+    <label><input type="radio" name="q22" value="A"> A. because</label>
+    <label><input type="radio" name="q22" value="B"> B. besides</label>
+    <label><input type="radio" name="q22" value="C"> C. so that</label>
+    <label><input type="radio" name="q22" value="D"> D. so</label>
+  </div>
+</div>
+
+<!-- ═══════════════════ SECTION 6: SENTENCE BUILDING ═══════════════════ -->
+<hr class="divider" style="margin:14px 0;">
+<div class="section-instruction">Mark the letter A, B, C or D on your answer sheet to indicate the sentence that is made from the given cues in each of the following questions.</div>
+
+<div class="answer-sheet" id="sheet-F">
+  <h3>📋 BẢNG TRẢ LỜI – Phần 6 (Questions 23–24)</h3>
+  <div class="ans-grid" id="grid-F"></div>
+</div>
+
+<div class="question-block" id="qblock-23">
+  <div class="q-stem">Question 23. English / speak / many / country / world</div>
+  <div class="options">
+    <label><input type="radio" name="q23" value="A"> A. English is spoken in many countries in the world.</label>
+    <label><input type="radio" name="q23" value="B"> B. English is speaking in many countries in the world.</label>
+    <label><input type="radio" name="q23" value="C"> C. English is speak in many countries in the world.</label>
+    <label><input type="radio" name="q23" value="D"> D. English speaks in many countries in the world.</label>
+  </div>
+</div>
+<div class="question-block" id="qblock-24">
+  <div class="q-stem">Question 24. If / I / be / you / I / not / spend / so much time / play games</div>
+  <div class="options">
+    <label><input type="radio" name="q24" value="A"> A. If I were you, I won't spend so much time to play games.</label>
+    <label><input type="radio" name="q24" value="B"> B. If I be you, I wouldn't spent so much time playing games.</label>
+    <label><input type="radio" name="q24" value="C"> C. If I were you, I wouldn't spend so much time playing games.</label>
+    <label><input type="radio" name="q24" value="D"> D. If I am you, I won't spend so much time to play games.</label>
+  </div>
+</div>
+
+<!-- ═══════════════════ SECTION 7: COHERENCE ═══════════════════ -->
+<hr class="divider" style="margin:14px 0;">
+<div class="section-instruction">Mark the letter A, B, C, or D on your answer sheet to indicate the correct answer to each of the following questions.</div>
+
+<div class="answer-sheet" id="sheet-G">
+  <h3>📋 BẢNG TRẢ LỜI – Phần 7 (Questions 25–26)</h3>
+  <div class="ans-grid" id="grid-G"></div>
+</div>
+
+<div class="passage">
+Natural disasters are dangerous events that happen in nature and can cause great damage.<br>
+a. They can also injure people and force many families to leave their homes.<br>
+b. Earthquakes, floods, storms, and wildfires often destroy homes, roads, and crops.<br>
+c. Although we cannot stop natural disasters, we can prepare for them by learning safety rules and making emergency plans.
+</div>
+
+<div class="question-block" id="qblock-25">
+  <div class="q-stem">Question 25. Put the sentences (a–c) in the correct order to make a logical text.</div>
+  <div class="options-2col">
+    <label><input type="radio" name="q25" value="A"> A. a-b-c</label>
+    <label><input type="radio" name="q25" value="B"> B. c-b-a</label>
+    <label><input type="radio" name="q25" value="C"> C. b-a-c</label>
+    <label><input type="radio" name="q25" value="D"> D. b-c-a</label>
+  </div>
+</div>
+<div class="question-block" id="qblock-26">
+  <div class="q-stem">Question 26. Choose the best ending sentence for the text in the previous question.</div>
+  <div class="options">
+    <label><input type="radio" name="q26" value="A"> A. Natural disasters are one of the reasons why many people are afraid of extreme weather.</label>
+    <label><input type="radio" name="q26" value="B"> B. Natural disasters show that nature sometimes changes everything in just a few minutes.</label>
+    <label><input type="radio" name="q26" value="C"> C. That is why natural disasters are a serious problem for people around the world.</label>
+    <label><input type="radio" name="q26" value="D"> D. With better preparation and support, communities can recover more quickly after these events.</label>
+  </div>
+</div>
+
+<!-- ═══════════════════ SECTION 8: PRONUNCIATION ═══════════════════ -->
+<hr class="divider" style="margin:14px 0;">
+<div class="section-instruction">Mark the letter A, B, C or D on your answer sheet to indicate the word whose underlined part differs from the other three in pronunciation in each of the following questions.</div>
+
+<div class="answer-sheet" id="sheet-H">
+  <h3>📋 BẢNG TRẢ LỜI – Phần 8 (Questions 27–28)</h3>
+  <div class="ans-grid" id="grid-H"></div>
+</div>
+
+<div class="question-block" id="qblock-27">
+  <div class="q-stem">Question 27.</div>
+  <div class="options-2col">
+    <label><input type="radio" name="q27" value="A"> A. s<u>ou</u>p</label>
+    <label><input type="radio" name="q27" value="B"> B. cl<u>ou</u>d</label>
+    <label><input type="radio" name="q27" value="C"> C. h<u>ou</u>se</label>
+    <label><input type="radio" name="q27" value="D"> D. gr<u>ou</u>nd</label>
+  </div>
+</div>
+<div class="question-block" id="qblock-28">
+  <div class="q-stem">Question 28.</div>
+  <div class="options-2col">
+    <label><input type="radio" name="q28" value="A"> A. cas<u>t</u>le</label>
+    <label><input type="radio" name="q28" value="B"> B. wa<u>t</u>er</label>
+    <label><input type="radio" name="q28" value="C"> C. lis<u>t</u>en</label>
+    <label><input type="radio" name="q28" value="D"> D. fas<u>t</u>en</label>
+  </div>
+</div>
+
+<!-- ═══════════════════ SECTION 9: CLOZE 2 (countryside) ═══════════════════ -->
+<hr class="divider" style="margin:14px 0;">
+<div class="section-instruction">Read the following passage and mark the letter A, B, C or D on your answer sheet to indicate the correct option that best fits each numbered blank.</div>
+
+<div class="passage">
+Many people enjoy living in the countryside because it is peaceful and quiet. They can breathe fresh air and have (29) _____ better view of nature every day. Some people stop (30) _____ in big cities because they want a slower and healthier life. Now, in the countryside, families often live in (31) _____ houses with large gardens around them. Each person usually has (32) _____ own space to relax and enjoy simple activities. However, people (33) _____ forget that country life also has some disadvantages, such as fewer services and less public transport. With better roads and technology, life in the countryside may improve a lot (34) _____ the next few years.
+</div>
+
+<div class="answer-sheet" id="sheet-I">
+  <h3>📋 BẢNG TRẢ LỜI – Phần 9 (Questions 29–34)</h3>
+  <div class="ans-grid" id="grid-I"></div>
+</div>
+
+<div class="question-block" id="qblock-29">
+  <div class="q-stem">Question 29.</div>
+  <div class="options-2col">
+    <label><input type="radio" name="q29" value="A"> A. Ø (no article)</label>
+    <label><input type="radio" name="q29" value="B"> B. the</label>
+    <label><input type="radio" name="q29" value="C"> C. a</label>
+    <label><input type="radio" name="q29" value="D"> D. an</label>
+  </div>
+</div>
+<div class="question-block" id="qblock-30">
+  <div class="q-stem">Question 30.</div>
+  <div class="options-2col">
+    <label><input type="radio" name="q30" value="A"> A. live</label>
+    <label><input type="radio" name="q30" value="B"> B. living</label>
+    <label><input type="radio" name="q30" value="C"> C. lived</label>
+    <label><input type="radio" name="q30" value="D"> D. to live</label>
+  </div>
+</div>
+<div class="question-block" id="qblock-31">
+  <div class="q-stem">Question 31. (adjective order)</div>
+  <div class="options-2col">
+    <label><input type="radio" name="q31" value="A"> A. brick modern lovely</label>
+    <label><input type="radio" name="q31" value="B"> B. brick lovely modern</label>
+    <label><input type="radio" name="q31" value="C"> C. modern lovely brick</label>
+    <label><input type="radio" name="q31" value="D"> D. lovely modern brick</label>
+  </div>
+</div>
+<div class="question-block" id="qblock-32">
+  <div class="q-stem">Question 32.</div>
+  <div class="options-2col">
+    <label><input type="radio" name="q32" value="A"> A. them</label>
+    <label><input type="radio" name="q32" value="B"> B. they</label>
+    <label><input type="radio" name="q32" value="C"> C. theirs</label>
+    <label><input type="radio" name="q32" value="D"> D. their</label>
+  </div>
+</div>
+<div class="question-block" id="qblock-33">
+  <div class="q-stem">Question 33.</div>
+  <div class="options-2col">
+    <label><input type="radio" name="q33" value="A"> A. must not to</label>
+    <label><input type="radio" name="q33" value="B"> B. should not to</label>
+    <label><input type="radio" name="q33" value="C"> C. had better not</label>
+    <label><input type="radio" name="q33" value="D"> D. ought not</label>
+  </div>
+</div>
+<div class="question-block" id="qblock-34">
+  <div class="q-stem">Question 34.</div>
+  <div class="options-2col">
+    <label><input type="radio" name="q34" value="A"> A. for</label>
+    <label><input type="radio" name="q34" value="B"> B. on</label>
+    <label><input type="radio" name="q34" value="C"> C. in</label>
+    <label><input type="radio" name="q34" value="D"> D. at</label>
+  </div>
+</div>
+
+<!-- ═══════════════════ SECTION 10: STRESS ═══════════════════ -->
+<hr class="divider" style="margin:14px 0;">
+<div class="section-instruction">Mark the letter A, B, C or D on your answer sheet to indicate the word that differs from the other three in the position of primary stress in each of the following questions.</div>
+
+<div class="answer-sheet" id="sheet-J">
+  <h3>📋 BẢNG TRẢ LỜI – Phần 10 (Questions 35–36)</h3>
+  <div class="ans-grid" id="grid-J"></div>
+</div>
+
+<div class="question-block" id="qblock-35">
+  <div class="q-stem">Question 35.</div>
+  <div class="options-2col">
+    <label><input type="radio" name="q35" value="A"> A. enjoy</label>
+    <label><input type="radio" name="q35" value="B"> B. allow</label>
+    <label><input type="radio" name="q35" value="C"> C. travel</label>
+    <label><input type="radio" name="q35" value="D"> D. decide</label>
+  </div>
+</div>
+<div class="question-block" id="qblock-36">
+  <div class="q-stem">Question 36.</div>
+  <div class="options-2col">
+    <label><input type="radio" name="q36" value="A"> A. population</label>
+    <label><input type="radio" name="q36" value="B"> B. photography</label>
+    <label><input type="radio" name="q36" value="C"> C. education</label>
+    <label><input type="radio" name="q36" value="D"> D. economic</label>
+  </div>
+</div>
+
+<!-- ═══════════════════ SECTION 11: FILL-IN-PARAGRAPH (smartphones) ═══════════════════ -->
+<hr class="divider" style="margin:14px 0;">
+<div class="section-instruction">Four phrases/sentences have been removed from the text below. For each question, mark the letter A, B, C or D on your answer sheet to indicate the correct option that best fits each of the numbered blanks.</div>
+
+<div class="passage">
+Among many inventions that have changed human life, the smartphone is one of the most useful. It is not only a device for making phone calls (37) _______. With a smartphone, people can send messages, search for information, take photos, and use maps to find their way. Because of these functions, smartphones have become an important part of daily life for many people.<br><br>
+(38) _______. Instead of carrying several different devices, users can do many tasks with just one small object. For example, they can read the news, join online classes, listen to music, and even pay for things in shops. In addition, smartphones help people stay connected with family and friends (39) _______.<br><br>
+However, smartphones also have some disadvantages. Many people spend too much time looking at screens and become less active. Some teenagers even find it hard to focus on their studies because (40) _______.<br>
+Therefore, although the smartphone is a very useful invention, people should use it wisely.
+</div>
+
+<div style="margin:8px 0 6px;font-weight:bold;">Options:</div>
+<div style="margin-bottom:10px;line-height:1.8;padding-left:14px;">
+  A. One reason smartphones are so popular is their convenience<br>
+  B. they use their phones too often for games or social media<br>
+  C. but also a tool for studying, working, and entertainment<br>
+  D. no matter where they are
+</div>
+
+<div class="answer-sheet" id="sheet-K">
+  <h3>📋 BẢNG TRẢ LỜI – Phần 11 (Questions 37–40)</h3>
+  <div class="ans-grid" id="grid-K"></div>
+</div>
+
+<div class="question-block" id="qblock-37">
+  <div class="q-stem">Question 37. _______ (blank in paragraph 1)</div>
+  <div class="options-2col">
+    <label><input type="radio" name="q37" value="A"> A. One reason smartphones are so popular is their convenience</label>
+    <label><input type="radio" name="q37" value="B"> B. they use their phones too often for games or social media</label>
+    <label><input type="radio" name="q37" value="C"> C. but also a tool for studying, working, and entertainment</label>
+    <label><input type="radio" name="q37" value="D"> D. no matter where they are</label>
+  </div>
+</div>
+<div class="question-block" id="qblock-38">
+  <div class="q-stem">Question 38. _______ (blank starting paragraph 2)</div>
+  <div class="options-2col">
+    <label><input type="radio" name="q38" value="A"> A. One reason smartphones are so popular is their convenience</label>
+    <label><input type="radio" name="q38" value="B"> B. they use their phones too often for games or social media</label>
+    <label><input type="radio" name="q38" value="C"> C. but also a tool for studying, working, and entertainment</label>
+    <label><input type="radio" name="q38" value="D"> D. no matter where they are</label>
+  </div>
+</div>
+<div class="question-block" id="qblock-39">
+  <div class="q-stem">Question 39. _______ (blank at end of paragraph 2)</div>
+  <div class="options-2col">
+    <label><input type="radio" name="q39" value="A"> A. One reason smartphones are so popular is their convenience</label>
+    <label><input type="radio" name="q39" value="B"> B. they use their phones too often for games or social media</label>
+    <label><input type="radio" name="q39" value="C"> C. but also a tool for studying, working, and entertainment</label>
+    <label><input type="radio" name="q39" value="D"> D. no matter where they are</label>
+  </div>
+</div>
+<div class="question-block" id="qblock-40">
+  <div class="q-stem">Question 40. _______ (blank in paragraph 3)</div>
+  <div class="options-2col">
+    <label><input type="radio" name="q40" value="A"> A. One reason smartphones are so popular is their convenience</label>
+    <label><input type="radio" name="q40" value="B"> B. they use their phones too often for games or social media</label>
+    <label><input type="radio" name="q40" value="C"> C. but also a tool for studying, working, and entertainment</label>
+    <label><input type="radio" name="q40" value="D"> D. no matter where they are</label>
+  </div>
+</div>
+
+<div class="page-break-note">Mã đề 902 — THE END</div>
+
+<!-- ═══════════════════ SUBMIT ═══════════════════ -->
+<div class="notif" id="notif">⚠️ Vui lòng trả lời tất cả 40 câu trước khi nộp bài!</div>
+<div class="submit-area">
+  <button class="btn-submit" onclick="submitExam()">📩 NỘP BÀI &amp; CHẤM ĐIỂM</button>
+</div>
+
+<!-- ═══════════════════ RESULTS ═══════════════════ -->
+<div id="results-area">
+  <div class="score-box">
+    <div class="score-label">KẾT QUẢ</div>
+    <div class="score-num" id="score-display">0/40</div>
+    <div class="score-label" id="score-pct"></div>
+  </div>
+
+  <div class="teacher-export-area">
+    <button class="btn-pdf" type="button" onclick="exportTeacherPDF()">📄 XUẤT PDF NỘP GIÁO VIÊN</button>
+    <div class="export-note">Sau khi bấm, chọn máy in “Save as PDF” hoặc “Lưu thành PDF” để lưu file gửi giáo viên.</div>
+  </div>
+
+  <div class="explanations">
+    <div class="expl-section">
+      <h4 onclick="toggleExpl(this)">📖 Phần 1 – Reading (Q1–6) <span>▼</span></h4>
+      <div class="expl-body">
+        <div class="expl-item"><span class="eq">Q1 – D:</span> Đoạn văn nêu các phương pháp học hiệu quả dựa trên khoa học (neuroplasticity, spaced learning, sleep, failure). Đáp án D tóm tắt đúng ý chính.</div>
+        <div class="expl-item"><span class="eq">Q2 – A:</span> Đoạn 1: "the brain builds stronger connections between neurons" – đây là nội dung của neuroplasticity.</div>
+        <div class="expl-item"><span class="eq">Q3 – D:</span> Bài đề xuất học ngắn, ngủ đủ giấc, ôn thường xuyên; "Studying many hours without breaks" (D) KHÔNG được đề cập là cách cải thiện mà ngược lại.</div>
+        <div class="expl-item"><span class="eq">Q4 – B:</span> "This" ở đoạn 4 thay thế cho ý "When students make mistakes and correct them, the brain becomes more active" → the idea that mistakes help learning.</div>
+        <div class="expl-item"><span class="eq">Q5 – D:</span> "organizes" = sắp xếp → gần nghĩa nhất với <em>arranges</em> (D).</div>
+        <div class="expl-item"><span class="eq">Q6 – C:</span> "effectively" (hiệu quả) ↔ trái nghĩa: <em>poorly</em> (C) = kém hiệu quả.</div>
+      </div>
+    </div>
+    <div class="expl-section">
+      <h4 onclick="toggleExpl(this)">📖 Phần 2 – Grammar (Q7–14) <span>▼</span></h4>
+      <div class="expl-body">
+        <div class="expl-item"><span class="eq">Q7 – D:</span> "As soon as" = ngay khi → mệnh đề thời gian chỉ hành động xảy ra liền ngay.</div>
+        <div class="expl-item"><span class="eq">Q8 – D:</span> Cấu trúc <em>such + a/an + adj + noun</em>: "such an interesting book".</div>
+        <div class="expl-item"><span class="eq">Q9 – A:</span> "because of" + danh từ/cụm danh từ ("the heavy rain"). "Because" đi với mệnh đề.</div>
+        <div class="expl-item"><span class="eq">Q10 – B:</span> Cấu trúc so sánh kép: <em>The more…, the more…</em> → "the more confident".</div>
+        <div class="expl-item"><span class="eq">Q11 – B:</span> "By the time" + quá khứ đơn → mệnh đề chính dùng quá khứ hoàn thành: <em>arrived / had started</em>.</div>
+        <div class="expl-item"><span class="eq">Q12 – B:</span> Đơn vị đo lường của lettuce (rau diếp/cải bắp): <em>a head of</em>.</div>
+        <div class="expl-item"><span class="eq">Q13 – D:</span> "detest" theo sau là V-ing: <em>getting</em>.</div>
+        <div class="expl-item"><span class="eq">Q14 – D:</span> Kristine nhận lời giúp đỡ, câu phù hợp nhất: "That's very kind of you."</div>
+      </div>
+    </div>
+    <div class="expl-section">
+      <h4 onclick="toggleExpl(this)">📖 Phần 3 – Rewrite (Q15–16) <span>▼</span></h4>
+      <div class="expl-body">
+        <div class="expl-item"><span class="eq">Q15 – C:</span> "so that he won't fail" → "in order not to fail" (B sai vì "in order to not" không chuẩn).</div>
+        <div class="expl-item"><span class="eq">Q16 – C:</span> Reported speech → Direct: "would" trong lời gián tiếp trở thành "will" trong lời trực tiếp: "I will pick you up after school."</div>
+      </div>
+    </div>
+    <div class="expl-section">
+      <h4 onclick="toggleExpl(this)">📖 Phần 4 – Signs & Notices (Q17–18) <span>▼</span></h4>
+      <div class="expl-body">
+        <div class="expl-item"><span class="eq">Q17 – C:</span> "BEWARE OF SNAKES" = cảnh báo du khách chú ý rắn trong khu vực → C.</div>
+        <div class="expl-item"><span class="eq">Q18 – A:</span> Anna yêu cầu Linda mang xoài tươi từ vườn: "Can you bring some fresh mangoes from your garden?"</div>
+      </div>
+    </div>
+    <div class="expl-section">
+      <h4 onclick="toggleExpl(this)">📖 Phần 5 – Cloze (Announcement) Q19–22 <span>▼</span></h4>
+      <div class="expl-body">
+        <div class="expl-item"><span class="eq">Q19 – A:</span> Mệnh đề quan hệ bổ nghĩa cho "students" (người) → <em>who</em>.</div>
+        <div class="expl-item"><span class="eq">Q20 – B:</span> "take place" = diễn ra (sự kiện).</div>
+        <div class="expl-item"><span class="eq">Q21 – A:</span> "learn how to make" = học cách làm → <em>to make</em>.</div>
+        <div class="expl-item"><span class="eq">Q22 – D:</span> "so" = vì vậy, diễn đạt kết quả của việc cung cấp đầy đủ vật liệu.</div>
+      </div>
+    </div>
+    <div class="expl-section">
+      <h4 onclick="toggleExpl(this)">📖 Phần 6 – Sentence Building (Q23–24) <span>▼</span></h4>
+      <div class="expl-body">
+        <div class="expl-item"><span class="eq">Q23 – A:</span> Câu bị động: "English is spoken in many countries in the world."</div>
+        <div class="expl-item"><span class="eq">Q24 – C:</span> Câu điều kiện loại 2: "If I were you, I wouldn't spend so much time playing games."</div>
+      </div>
+    </div>
+    <div class="expl-section">
+      <h4 onclick="toggleExpl(this)">📖 Phần 7 – Coherence (Q25–26) <span>▼</span></h4>
+      <div class="expl-body">
+        <div class="expl-item"><span class="eq">Q25 – C:</span> Trình tự logic: b (ví dụ cụ thể về thảm họa) → a (hậu quả với con người) → c (giải pháp). Đáp án C: b-a-c.</div>
+        <div class="expl-item"><span class="eq">Q26 – D:</span> Câu kết bài nên kết nối với ý "chuẩn bị" ở câu c → D phù hợp nhất.</div>
+      </div>
+    </div>
+    <div class="expl-section">
+      <h4 onclick="toggleExpl(this)">📖 Phần 8 – Pronunciation (Q27–28) <span>▼</span></h4>
+      <div class="expl-body">
+        <div class="expl-item"><span class="eq">Q27 – A:</span> soup /uː/, cloud /aʊ/, house /aʊ/, ground /aʊ/ → "soup" (A) đọc khác.</div>
+        <div class="expl-item"><span class="eq">Q28 – B:</span> castle /ˈkɑːsl/ (t câm), listen /ˈlɪsn/ (t câm), fasten /ˈfɑːsn/ (t câm), water /ˈwɔːtə/ (t đọc) → "water" (B) đọc khác.</div>
+      </div>
+    </div>
+    <div class="expl-section">
+      <h4 onclick="toggleExpl(this)">📖 Phần 9 – Cloze (Countryside) Q29–34 <span>▼</span></h4>
+      <div class="expl-body">
+        <div class="expl-item"><span class="eq">Q29 – C:</span> "a better view" – mạo từ không xác định trước danh từ số ít bắt đầu bằng phụ âm.</div>
+        <div class="expl-item"><span class="eq">Q30 – B:</span> "stop + V-ing" = ngừng làm gì → "stop living".</div>
+        <div class="expl-item"><span class="eq">Q31 – D:</span> Thứ tự tính từ: opinion → size → age → shape → colour → origin → material → purpose. "lovely modern brick" = đẹp (opinion) + hiện đại (age/style) + gạch (material) → D.</div>
+        <div class="expl-item"><span class="eq">Q32 – D:</span> "their own space" – tính từ sở hữu trước danh từ.</div>
+        <div class="expl-item"><span class="eq">Q33 – C:</span> "had better not" = tốt nhất không nên (cấu trúc chuẩn, không có "to" sau).</div>
+        <div class="expl-item"><span class="eq">Q34 – C:</span> "in the next few years" = trong vài năm tới.</div>
+      </div>
+    </div>
+    <div class="expl-section">
+      <h4 onclick="toggleExpl(this)">📖 Phần 10 – Word Stress (Q35–36) <span>▼</span></h4>
+      <div class="expl-body">
+        <div class="expl-item"><span class="eq">Q35 – C:</span> enjoy /ɪnˈdʒɔɪ/, allow /əˈlaʊ/, decide /dɪˈsaɪd/ → trọng âm âm 2; travel /ˈtrævl/ → trọng âm âm 1 → C khác.</div>
+        <div class="expl-item"><span class="eq">Q36 – B:</span> population /ˌpɒpjʊˈleɪʃn/ (âm 3), education /ˌedjʊˈkeɪʃn/ (âm 3), economic /ˌiːkəˈnɒmɪk/ (âm 3); photography /fəˈtɒɡrəfi/ (âm 2) → <em>photography</em> khác vị trí trọng âm.</div>
+      </div>
+    </div>
+    <div class="expl-section">
+      <h4 onclick="toggleExpl(this)">📖 Phần 11 – Fill in Paragraph (Q37–40) <span>▼</span></h4>
+      <div class="expl-body">
+        <div class="expl-item"><span class="eq">Q37 – C:</span> "not only a device for making phone calls _C_ (but also a tool…)" – cấu trúc not only… but also.</div>
+        <div class="expl-item"><span class="eq">Q38 – A:</span> Câu chủ đề đoạn 2: "One reason smartphones are so popular is their convenience."</div>
+        <div class="expl-item"><span class="eq">Q39 – D:</span> "stay connected with family and friends _D_ (no matter where they are)".</div>
+        <div class="expl-item"><span class="eq">Q40 – B:</span> "find it hard to focus on their studies because _B_ (they use their phones too often for games or social media)".</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════ PDF REPORT FOR TEACHER ONLY ═══════════════════ -->
+<div id="teacher-pdf-area" aria-hidden="true"></div>
+
+<script>
+// ── ANSWER KEY ──
+const answerKey = {
+  q1:'D', q2:'A', q3:'D', q4:'B', q5:'D', q6:'C',
+  q7:'D', q8:'D', q9:'A', q10:'B', q11:'B', q12:'B', q13:'D', q14:'D',
+  q15:'C', q16:'C',
+  q17:'C', q18:'A',
+  q19:'A', q20:'B', q21:'A', q22:'D',
+  q23:'A', q24:'C',
+  q25:'C', q26:'D',
+  q27:'A', q28:'B',
+  q29:'C', q30:'B', q31:'D', q32:'D', q33:'C', q34:'C',
+  q35:'C', q36:'B',
+  q37:'C', q38:'A', q39:'D', q40:'B'
+};
+
+// ── TIMER / ATTEMPT TRACKING ──
+const EXAM_TOTAL_SECONDS = 60 * 60;
+const EXAM_STORAGE_KEY = 'exam_902_attempt_count';
+let examStartTime = Date.now();
+let examEndTime = null;
+let examSubmitted = false;
+let examAttemptNumber = 0;
+let latestCorrectCount = 0;
+
+function pad2(n) { return String(n).padStart(2, '0'); }
+
+function formatDuration(totalSeconds) {
+  const safe = Math.max(0, Math.floor(totalSeconds || 0));
+  const h = Math.floor(safe / 3600);
+  const m = Math.floor((safe % 3600) / 60);
+  const s = safe % 60;
+  return h > 0 ? `${h}:${pad2(m)}:${pad2(s)}` : `${pad2(m)}:${pad2(s)}`;
+}
+
+function getElapsedSeconds() {
+  const end = examEndTime || Date.now();
+  return Math.max(0, Math.floor((end - examStartTime) / 1000));
+}
+
+function updateTimer() {
+  if (examSubmitted) return;
+  const elapsed = getElapsedSeconds();
+  const remaining = Math.max(0, EXAM_TOTAL_SECONDS - elapsed);
+  const timerDisplay = document.getElementById('timer-display');
+  const timerBar = document.getElementById('timer-bar');
+  if (timerDisplay) timerDisplay.textContent = formatDuration(remaining);
+  if (timerBar) {
+    timerBar.classList.toggle('time-warning', remaining <= 10 * 60 && remaining > 5 * 60);
+    timerBar.classList.toggle('time-danger', remaining <= 5 * 60);
+  }
+  if (remaining <= 0) {
+    clearInterval(timerInterval);
+    submitExam({ force: true, reason: 'timeout' });
+  }
+}
+
+const timerInterval = setInterval(updateTimer, 1000);
+updateTimer();
+
+function incrementAttemptCount() {
+  try {
+    const current = Number(localStorage.getItem(EXAM_STORAGE_KEY) || '0');
+    const next = Number.isFinite(current) ? current + 1 : 1;
+    localStorage.setItem(EXAM_STORAGE_KEY, String(next));
+    return next;
+  } catch (err) {
+    return 1;
+  }
+}
+
+function getStudentInfo() {
+  return {
+    name: (document.getElementById('student-name')?.value || '').trim() || 'Chưa nhập',
+    id: (document.getElementById('student-id')?.value || '').trim() || 'Chưa nhập'
+  };
+}
+
+function escapeHTML(value) {
+  return String(value ?? '').replace(/[&<>'"]/g, ch => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+  }[ch]));
+}
+
+function getChosenAnswer(i) {
+  return document.querySelector(`input[name="q${i}"]:checked`)?.value || '';
+}
+
+function getResultText(chosen, key) {
+  if (!chosen) return 'Bỏ trống';
+  return chosen === key ? 'Đúng' : 'Sai';
+}
+
+
+// ── BUILD MINI ANSWER GRIDS ──
+const sections = {
+  'grid-A': {start:1, end:6},
+  'grid-B': {start:7, end:14},
+  'grid-C': {start:15, end:16},
+  'grid-D': {start:17, end:18},
+  'grid-E': {start:19, end:22},
+  'grid-F': {start:23, end:24},
+  'grid-G': {start:25, end:26},
+  'grid-H': {start:27, end:28},
+  'grid-I': {start:29, end:34},
+  'grid-J': {start:35, end:36},
+  'grid-K': {start:37, end:40}
+};
+
+Object.entries(sections).forEach(([gridId, {start, end}]) => {
+  const grid = document.getElementById(gridId);
+  for (let i = start; i <= end; i++) {
+    const row = document.createElement('div');
+    row.className = 'ans-row';
+    row.id = `ans-row-${i}`;
+    row.innerHTML = `<span class="qn">Q${i}:</span>`
+      + ['A','B','C','D'].map(opt =>
+        `<label id="ans-lbl-${i}-${opt}"><input type="radio" name="sheet_q${i}" value="${opt}" onchange="syncQ(${i},'${opt}')">${opt}</label>`
+      ).join('');
+    grid.appendChild(row);
+  }
+});
+
+// sync sheet → question block
+function syncQ(num, val) {
+  const radios = document.querySelectorAll(`input[name="q${num}"]`);
+  radios.forEach(r => {
+    if (r.value === val) {
+      r.checked = true;
+      r.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+  });
+}
+
+// sync question block → sheet
+document.querySelectorAll('input[type=radio]').forEach(r => {
+  if (!r.name.startsWith('sheet_')) {
+    r.addEventListener('change', () => {
+      const num = r.name.replace('q','');
+      const sheetR = document.querySelector(`input[name="sheet_q${num}"][value="${r.value}"]`);
+      if (sheetR) sheetR.checked = true;
+    });
+  }
+});
+
+function toggleExpl(h4) {
+  const body = h4.nextElementSibling;
+  body.classList.toggle('open');
+  const arrow = h4.querySelector('span');
+  arrow.textContent = body.classList.contains('open') ? '▲' : '▼';
+}
+
+function submitExam(options = {}) {
+  if (examSubmitted) return;
+
+  const forceSubmit = options.force === true;
+  const submitReason = options.reason || 'manual';
+
+  // check all answered for manual submit only
+  const unanswered = [];
+  for (let i = 1; i <= 40; i++) {
+    if (!document.querySelector(`input[name="q${i}"]:checked`)) unanswered.push(i);
+  }
+  const notif = document.getElementById('notif');
+  if (unanswered.length > 0 && !forceSubmit) {
+    notif.style.display = 'block';
+    notif.textContent = `⚠️ Chưa trả lời: câu ${unanswered.join(', ')}. Vui lòng hoàn thành trước khi nộp!`;
+    notif.scrollIntoView({behavior:'smooth', block:'center'});
+    return;
+  }
+  notif.style.display = 'none';
+
+  examSubmitted = true;
+  examEndTime = Date.now();
+  clearInterval(timerInterval);
+  examAttemptNumber = incrementAttemptCount();
+
+  let correct = 0;
+  for (let i = 1; i <= 40; i++) {
+    const chosen = getChosenAnswer(i);
+    const key = answerKey[`q${i}`];
+    // mark answer sheet labels
+    ['A','B','C','D'].forEach(opt => {
+      const lbl = document.getElementById(`ans-lbl-${i}-${opt}`);
+      if (!lbl) return;
+      lbl.classList.remove('correct-mark','wrong-mark');
+      if (opt === key) lbl.classList.add('correct-mark');
+      else if (opt === chosen && chosen !== key) lbl.classList.add('wrong-mark');
+    });
+    // mark question options
+    const qRadios = document.querySelectorAll(`input[name="q${i}"]`);
+    qRadios.forEach(r => {
+      const lbl = r.parentElement;
+      lbl.classList.remove('opted-correct','opted-wrong');
+      if (r.value === key) lbl.classList.add('opted-correct');
+      else if (r.value === chosen && chosen !== key) lbl.classList.add('opted-wrong');
+      r.disabled = true;
+    });
+    if (chosen === key) correct++;
+  }
+  latestCorrectCount = correct;
+
+  // disable sheet radios too
+  document.querySelectorAll('input[name^="sheet_q"]').forEach(r => r.disabled = true);
+
+  const pct = ((correct/40)*10).toFixed(2);
+  const elapsedText = formatDuration(getElapsedSeconds());
+  document.getElementById('score-display').textContent = `${correct}/40`;
+  document.getElementById('score-pct').textContent = `Điểm: ${pct} / 10 | Thời gian làm bài: ${elapsedText}`;
+  document.getElementById('results-area').style.display = 'block';
+  document.getElementById('results-area').scrollIntoView({behavior:'smooth', block:'start'});
+
+  const timerBar = document.getElementById('timer-bar');
+  if (timerBar) {
+    timerBar.classList.remove('time-warning','time-danger');
+    timerBar.textContent = submitReason === 'timeout'
+      ? `⏰ Hết giờ - bài đã được nộp tự động. Thời gian làm bài: ${elapsedText}`
+      : `✅ Đã nộp bài. Thời gian làm bài: ${elapsedText}`;
+  }
+
+  // disable submit
+  document.querySelector('.btn-submit').disabled = true;
+  document.querySelector('.btn-submit').textContent = submitReason === 'timeout' ? '⏰ Đã hết giờ' : '✅ Đã nộp bài';
+}
+
+function buildTeacherReportHTML() {
+  const info = getStudentInfo();
+  const submitTime = examEndTime ? new Date(examEndTime).toLocaleString('vi-VN') : new Date().toLocaleString('vi-VN');
+  const elapsedText = formatDuration(getElapsedSeconds());
+  const score10 = ((latestCorrectCount / 40) * 10).toFixed(2);
+  const rows = [];
+  for (let i = 1; i <= 40; i++) {
+    const chosen = getChosenAnswer(i);
+    const key = answerKey[`q${i}`];
+    const result = getResultText(chosen, key);
+    rows.push(`<tr>
+      <td>${i}</td>
+      <td>${escapeHTML(chosen || 'Bỏ trống')}</td>
+      <td>${escapeHTML(key)}</td>
+      <td>${escapeHTML(result)}</td>
+    </tr>`);
+  }
+
+  return `
+    <div class="teacher-pdf-page">
+      <div class="pdf-title">Phiếu nộp bài gửi giáo viên</div>
+      <div class="pdf-subtitle">Môn: Tiếng Anh 9 - Mã đề 902</div>
+      <div style="text-align:center;margin-bottom:8px;">Trường THCS Trưng Vương - Năm học 2025 - 2026</div>
+
+      <div class="pdf-meta-grid">
+        <div><strong>Họ và tên:</strong> ${escapeHTML(info.name)}</div>
+        <div><strong>Số báo danh:</strong> ${escapeHTML(info.id)}</div>
+        <div><strong>Thời điểm nộp:</strong> ${escapeHTML(submitTime)}</div>
+        <div><strong>Thời gian làm bài:</strong> ${escapeHTML(elapsedText)}</div>
+        <div><strong>Số lượt làm bài:</strong> ${escapeHTML(examAttemptNumber || 1)}</div>
+        <div><strong>Tổng số câu:</strong> 40</div>
+      </div>
+
+      <div class="pdf-score-box">
+        Kết quả: ${latestCorrectCount}/40 - Điểm: ${score10}/10
+      </div>
+
+      <div><strong>Bảng chi tiết đáp án</strong></div>
+      <table class="pdf-answer-table">
+        <thead>
+          <tr>
+            <th>Câu</th>
+            <th>Đáp án học sinh</th>
+            <th>Đáp án đúng</th>
+            <th>Kết quả</th>
+          </tr>
+        </thead>
+        <tbody>${rows.join('')}</tbody>
+      </table>
+
+      <div class="pdf-signature">
+        <div>
+          <strong>Học sinh</strong><br>
+          <span style="font-style:italic;">(ký, ghi rõ họ tên nếu in giấy)</span><br><br><br>
+          ${escapeHTML(info.name)}
+        </div>
+        <div>
+          <strong>Giáo viên nhận bài</strong><br>
+          <span style="font-style:italic;">(xác nhận nếu cần)</span><br><br><br>
+          ................................
+        </div>
+      </div>
+      <div class="pdf-small-note">Ghi chú: Mục “Số lượt làm bài” chỉ được đưa vào phiếu PDF gửi giáo viên; không hiển thị trong giao diện bài làm của học sinh.</div>
+    </div>`;
+}
+
+function exportTeacherPDF() {
+  if (!examSubmitted) {
+    const notif = document.getElementById('notif');
+    notif.style.display = 'block';
+    notif.textContent = '⚠️ Vui lòng nộp bài trước khi xuất PDF gửi giáo viên.';
+    notif.scrollIntoView({behavior:'smooth', block:'center'});
+    return;
+  }
+  const area = document.getElementById('teacher-pdf-area');
+  area.innerHTML = buildTeacherReportHTML();
+  document.body.classList.add('print-report-mode');
+  window.print();
+}
+
+window.addEventListener('afterprint', () => {
+  document.body.classList.remove('print-report-mode');
+});
+</script>
+</body>
+</html>
